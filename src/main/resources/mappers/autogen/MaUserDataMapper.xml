@@ -1,0 +1,744 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.vicente.dao.autogen.MaUserDataMapper" >
+  <resultMap id="BaseResultMap" type="com.vicente.entity.autogen.MaUserData" >
+    <id column="userid" property="userid" jdbcType="BIGINT" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="corpid" property="corpid" jdbcType="BIGINT" />
+    <result column="encrypted_email" property="encryptedEmail" jdbcType="VARCHAR" />
+    <result column="mobile" property="mobile" jdbcType="VARCHAR" />
+    <result column="encrypted_mobile" property="encryptedMobile" jdbcType="VARCHAR" />
+    <result column="addtime_hour" property="addtimeHour" jdbcType="INTEGER" />
+    <result column="addtime_week" property="addtimeWeek" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="age" property="age" jdbcType="DOUBLE" />
+    <result column="sex" property="sex" jdbcType="VARCHAR" />
+    <result column="all_city" property="allCity" jdbcType="VARCHAR" />
+    <result column="all_province" property="allProvince" jdbcType="VARCHAR" />
+    <result column="birthday" property="birthday" jdbcType="DATE" />
+    <result column="real_age" property="realAge" jdbcType="DOUBLE" />
+    <result column="email_is_corrected" property="emailIsCorrected" jdbcType="BIT" />
+    <result column="userExpGroupid" property="userexpgroupid" jdbcType="INTEGER" />
+    <result column="userExpGroup" property="userexpgroup" jdbcType="VARCHAR" />
+    <result column="is_email_unsubs" property="isEmailUnsubs" jdbcType="SMALLINT" />
+    <result column="activityid" property="activityid" jdbcType="INTEGER" />
+    <result column="carloan" property="carloan" jdbcType="VARCHAR" />
+    <result column="clear" property="clear" jdbcType="VARCHAR" />
+    <result column="client" property="client" jdbcType="VARCHAR" />
+    <result column="ipcity" property="ipcity" jdbcType="VARCHAR" />
+    <result column="ipprovince" property="ipprovince" jdbcType="VARCHAR" />
+    <result column="ispc" property="ispc" jdbcType="VARCHAR" />
+    <result column="mobileprovince" property="mobileprovince" jdbcType="VARCHAR" />
+    <result column="mobiletype" property="mobiletype" jdbcType="VARCHAR" />
+    <result column="terminal_type" property="terminalType" jdbcType="VARCHAR" />
+    <result column="userprovince" property="userprovince" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.vicente.entity.autogen.MaUserDataWithBLOBs" extends="BaseResultMap" >
+    <result column="question1" property="question1" jdbcType="LONGVARCHAR" />
+    <result column="question2" property="question2" jdbcType="LONGVARCHAR" />
+    <result column="view" property="view" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    userid, email, corpid, encrypted_email, mobile, encrypted_mobile, addtime_hour, addtime_week, 
+    name, age, sex, all_city, all_province, birthday, real_age, email_is_corrected, userExpGroupid, 
+    userExpGroup, is_email_unsubs, activityid, carloan, clear, client, ipcity, ipprovince, 
+    ispc, mobileprovince, mobiletype, terminal_type, userprovince
+  </sql>
+  <sql id="Blob_Column_List" >
+    question1, question2, view
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.vicente.entity.autogen.MaUserDataExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from ma_user_data
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.vicente.entity.autogen.MaUserDataExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from ma_user_data
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from ma_user_data
+    where userid = #{userid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from ma_user_data
+    where userid = #{userid,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.vicente.entity.autogen.MaUserDataExample" >
+    delete from ma_user_data
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.vicente.entity.autogen.MaUserDataWithBLOBs" >
+    <selectKey resultType="java.lang.Long" keyProperty="userid" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into ma_user_data (email, corpid, encrypted_email, 
+      mobile, encrypted_mobile, addtime_hour, 
+      addtime_week, name, age, 
+      sex, all_city, all_province, 
+      birthday, real_age, email_is_corrected, 
+      userExpGroupid, userExpGroup, is_email_unsubs, 
+      activityid, carloan, clear, 
+      client, ipcity, ipprovince, 
+      ispc, mobileprovince, mobiletype, 
+      terminal_type, userprovince, question1, 
+      question2, view)
+    values (#{email,jdbcType=VARCHAR}, #{corpid,jdbcType=BIGINT}, #{encryptedEmail,jdbcType=VARCHAR}, 
+      #{mobile,jdbcType=VARCHAR}, #{encryptedMobile,jdbcType=VARCHAR}, #{addtimeHour,jdbcType=INTEGER}, 
+      #{addtimeWeek,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{age,jdbcType=DOUBLE}, 
+      #{sex,jdbcType=VARCHAR}, #{allCity,jdbcType=VARCHAR}, #{allProvince,jdbcType=VARCHAR}, 
+      #{birthday,jdbcType=DATE}, #{realAge,jdbcType=DOUBLE}, #{emailIsCorrected,jdbcType=BIT}, 
+      #{userexpgroupid,jdbcType=INTEGER}, #{userexpgroup,jdbcType=VARCHAR}, #{isEmailUnsubs,jdbcType=SMALLINT}, 
+      #{activityid,jdbcType=INTEGER}, #{carloan,jdbcType=VARCHAR}, #{clear,jdbcType=VARCHAR}, 
+      #{client,jdbcType=VARCHAR}, #{ipcity,jdbcType=VARCHAR}, #{ipprovince,jdbcType=VARCHAR}, 
+      #{ispc,jdbcType=VARCHAR}, #{mobileprovince,jdbcType=VARCHAR}, #{mobiletype,jdbcType=VARCHAR}, 
+      #{terminalType,jdbcType=VARCHAR}, #{userprovince,jdbcType=VARCHAR}, #{question1,jdbcType=LONGVARCHAR}, 
+      #{question2,jdbcType=LONGVARCHAR}, #{view,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.vicente.entity.autogen.MaUserDataWithBLOBs" >
+    <selectKey resultType="java.lang.Long" keyProperty="userid" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into ma_user_data
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="corpid != null" >
+        corpid,
+      </if>
+      <if test="encryptedEmail != null" >
+        encrypted_email,
+      </if>
+      <if test="mobile != null" >
+        mobile,
+      </if>
+      <if test="encryptedMobile != null" >
+        encrypted_mobile,
+      </if>
+      <if test="addtimeHour != null" >
+        addtime_hour,
+      </if>
+      <if test="addtimeWeek != null" >
+        addtime_week,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="age != null" >
+        age,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="allCity != null" >
+        all_city,
+      </if>
+      <if test="allProvince != null" >
+        all_province,
+      </if>
+      <if test="birthday != null" >
+        birthday,
+      </if>
+      <if test="realAge != null" >
+        real_age,
+      </if>
+      <if test="emailIsCorrected != null" >
+        email_is_corrected,
+      </if>
+      <if test="userexpgroupid != null" >
+        userExpGroupid,
+      </if>
+      <if test="userexpgroup != null" >
+        userExpGroup,
+      </if>
+      <if test="isEmailUnsubs != null" >
+        is_email_unsubs,
+      </if>
+      <if test="activityid != null" >
+        activityid,
+      </if>
+      <if test="carloan != null" >
+        carloan,
+      </if>
+      <if test="clear != null" >
+        clear,
+      </if>
+      <if test="client != null" >
+        client,
+      </if>
+      <if test="ipcity != null" >
+        ipcity,
+      </if>
+      <if test="ipprovince != null" >
+        ipprovince,
+      </if>
+      <if test="ispc != null" >
+        ispc,
+      </if>
+      <if test="mobileprovince != null" >
+        mobileprovince,
+      </if>
+      <if test="mobiletype != null" >
+        mobiletype,
+      </if>
+      <if test="terminalType != null" >
+        terminal_type,
+      </if>
+      <if test="userprovince != null" >
+        userprovince,
+      </if>
+      <if test="question1 != null" >
+        question1,
+      </if>
+      <if test="question2 != null" >
+        question2,
+      </if>
+      <if test="view != null" >
+        view,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="corpid != null" >
+        #{corpid,jdbcType=BIGINT},
+      </if>
+      <if test="encryptedEmail != null" >
+        #{encryptedEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="encryptedMobile != null" >
+        #{encryptedMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="addtimeHour != null" >
+        #{addtimeHour,jdbcType=INTEGER},
+      </if>
+      <if test="addtimeWeek != null" >
+        #{addtimeWeek,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null" >
+        #{age,jdbcType=DOUBLE},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="allCity != null" >
+        #{allCity,jdbcType=VARCHAR},
+      </if>
+      <if test="allProvince != null" >
+        #{allProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null" >
+        #{birthday,jdbcType=DATE},
+      </if>
+      <if test="realAge != null" >
+        #{realAge,jdbcType=DOUBLE},
+      </if>
+      <if test="emailIsCorrected != null" >
+        #{emailIsCorrected,jdbcType=BIT},
+      </if>
+      <if test="userexpgroupid != null" >
+        #{userexpgroupid,jdbcType=INTEGER},
+      </if>
+      <if test="userexpgroup != null" >
+        #{userexpgroup,jdbcType=VARCHAR},
+      </if>
+      <if test="isEmailUnsubs != null" >
+        #{isEmailUnsubs,jdbcType=SMALLINT},
+      </if>
+      <if test="activityid != null" >
+        #{activityid,jdbcType=INTEGER},
+      </if>
+      <if test="carloan != null" >
+        #{carloan,jdbcType=VARCHAR},
+      </if>
+      <if test="clear != null" >
+        #{clear,jdbcType=VARCHAR},
+      </if>
+      <if test="client != null" >
+        #{client,jdbcType=VARCHAR},
+      </if>
+      <if test="ipcity != null" >
+        #{ipcity,jdbcType=VARCHAR},
+      </if>
+      <if test="ipprovince != null" >
+        #{ipprovince,jdbcType=VARCHAR},
+      </if>
+      <if test="ispc != null" >
+        #{ispc,jdbcType=VARCHAR},
+      </if>
+      <if test="mobileprovince != null" >
+        #{mobileprovince,jdbcType=VARCHAR},
+      </if>
+      <if test="mobiletype != null" >
+        #{mobiletype,jdbcType=VARCHAR},
+      </if>
+      <if test="terminalType != null" >
+        #{terminalType,jdbcType=VARCHAR},
+      </if>
+      <if test="userprovince != null" >
+        #{userprovince,jdbcType=VARCHAR},
+      </if>
+      <if test="question1 != null" >
+        #{question1,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="question2 != null" >
+        #{question2,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="view != null" >
+        #{view,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.vicente.entity.autogen.MaUserDataExample" resultType="java.lang.Integer" >
+    select count(*) from ma_user_data
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update ma_user_data
+    <set >
+      <if test="record.userid != null" >
+        userid = #{record.userid,jdbcType=BIGINT},
+      </if>
+      <if test="record.email != null" >
+        email = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.corpid != null" >
+        corpid = #{record.corpid,jdbcType=BIGINT},
+      </if>
+      <if test="record.encryptedEmail != null" >
+        encrypted_email = #{record.encryptedEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mobile != null" >
+        mobile = #{record.mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="record.encryptedMobile != null" >
+        encrypted_mobile = #{record.encryptedMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addtimeHour != null" >
+        addtime_hour = #{record.addtimeHour,jdbcType=INTEGER},
+      </if>
+      <if test="record.addtimeWeek != null" >
+        addtime_week = #{record.addtimeWeek,jdbcType=INTEGER},
+      </if>
+      <if test="record.name != null" >
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.age != null" >
+        age = #{record.age,jdbcType=DOUBLE},
+      </if>
+      <if test="record.sex != null" >
+        sex = #{record.sex,jdbcType=VARCHAR},
+      </if>
+      <if test="record.allCity != null" >
+        all_city = #{record.allCity,jdbcType=VARCHAR},
+      </if>
+      <if test="record.allProvince != null" >
+        all_province = #{record.allProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="record.birthday != null" >
+        birthday = #{record.birthday,jdbcType=DATE},
+      </if>
+      <if test="record.realAge != null" >
+        real_age = #{record.realAge,jdbcType=DOUBLE},
+      </if>
+      <if test="record.emailIsCorrected != null" >
+        email_is_corrected = #{record.emailIsCorrected,jdbcType=BIT},
+      </if>
+      <if test="record.userexpgroupid != null" >
+        userExpGroupid = #{record.userexpgroupid,jdbcType=INTEGER},
+      </if>
+      <if test="record.userexpgroup != null" >
+        userExpGroup = #{record.userexpgroup,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isEmailUnsubs != null" >
+        is_email_unsubs = #{record.isEmailUnsubs,jdbcType=SMALLINT},
+      </if>
+      <if test="record.activityid != null" >
+        activityid = #{record.activityid,jdbcType=INTEGER},
+      </if>
+      <if test="record.carloan != null" >
+        carloan = #{record.carloan,jdbcType=VARCHAR},
+      </if>
+      <if test="record.clear != null" >
+        clear = #{record.clear,jdbcType=VARCHAR},
+      </if>
+      <if test="record.client != null" >
+        client = #{record.client,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ipcity != null" >
+        ipcity = #{record.ipcity,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ipprovince != null" >
+        ipprovince = #{record.ipprovince,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ispc != null" >
+        ispc = #{record.ispc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mobileprovince != null" >
+        mobileprovince = #{record.mobileprovince,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mobiletype != null" >
+        mobiletype = #{record.mobiletype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.terminalType != null" >
+        terminal_type = #{record.terminalType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userprovince != null" >
+        userprovince = #{record.userprovince,jdbcType=VARCHAR},
+      </if>
+      <if test="record.question1 != null" >
+        question1 = #{record.question1,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.question2 != null" >
+        question2 = #{record.question2,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.view != null" >
+        view = #{record.view,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update ma_user_data
+    set userid = #{record.userid,jdbcType=BIGINT},
+      email = #{record.email,jdbcType=VARCHAR},
+      corpid = #{record.corpid,jdbcType=BIGINT},
+      encrypted_email = #{record.encryptedEmail,jdbcType=VARCHAR},
+      mobile = #{record.mobile,jdbcType=VARCHAR},
+      encrypted_mobile = #{record.encryptedMobile,jdbcType=VARCHAR},
+      addtime_hour = #{record.addtimeHour,jdbcType=INTEGER},
+      addtime_week = #{record.addtimeWeek,jdbcType=INTEGER},
+      name = #{record.name,jdbcType=VARCHAR},
+      age = #{record.age,jdbcType=DOUBLE},
+      sex = #{record.sex,jdbcType=VARCHAR},
+      all_city = #{record.allCity,jdbcType=VARCHAR},
+      all_province = #{record.allProvince,jdbcType=VARCHAR},
+      birthday = #{record.birthday,jdbcType=DATE},
+      real_age = #{record.realAge,jdbcType=DOUBLE},
+      email_is_corrected = #{record.emailIsCorrected,jdbcType=BIT},
+      userExpGroupid = #{record.userexpgroupid,jdbcType=INTEGER},
+      userExpGroup = #{record.userexpgroup,jdbcType=VARCHAR},
+      is_email_unsubs = #{record.isEmailUnsubs,jdbcType=SMALLINT},
+      activityid = #{record.activityid,jdbcType=INTEGER},
+      carloan = #{record.carloan,jdbcType=VARCHAR},
+      clear = #{record.clear,jdbcType=VARCHAR},
+      client = #{record.client,jdbcType=VARCHAR},
+      ipcity = #{record.ipcity,jdbcType=VARCHAR},
+      ipprovince = #{record.ipprovince,jdbcType=VARCHAR},
+      ispc = #{record.ispc,jdbcType=VARCHAR},
+      mobileprovince = #{record.mobileprovince,jdbcType=VARCHAR},
+      mobiletype = #{record.mobiletype,jdbcType=VARCHAR},
+      terminal_type = #{record.terminalType,jdbcType=VARCHAR},
+      userprovince = #{record.userprovince,jdbcType=VARCHAR},
+      question1 = #{record.question1,jdbcType=LONGVARCHAR},
+      question2 = #{record.question2,jdbcType=LONGVARCHAR},
+      view = #{record.view,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update ma_user_data
+    set userid = #{record.userid,jdbcType=BIGINT},
+      email = #{record.email,jdbcType=VARCHAR},
+      corpid = #{record.corpid,jdbcType=BIGINT},
+      encrypted_email = #{record.encryptedEmail,jdbcType=VARCHAR},
+      mobile = #{record.mobile,jdbcType=VARCHAR},
+      encrypted_mobile = #{record.encryptedMobile,jdbcType=VARCHAR},
+      addtime_hour = #{record.addtimeHour,jdbcType=INTEGER},
+      addtime_week = #{record.addtimeWeek,jdbcType=INTEGER},
+      name = #{record.name,jdbcType=VARCHAR},
+      age = #{record.age,jdbcType=DOUBLE},
+      sex = #{record.sex,jdbcType=VARCHAR},
+      all_city = #{record.allCity,jdbcType=VARCHAR},
+      all_province = #{record.allProvince,jdbcType=VARCHAR},
+      birthday = #{record.birthday,jdbcType=DATE},
+      real_age = #{record.realAge,jdbcType=DOUBLE},
+      email_is_corrected = #{record.emailIsCorrected,jdbcType=BIT},
+      userExpGroupid = #{record.userexpgroupid,jdbcType=INTEGER},
+      userExpGroup = #{record.userexpgroup,jdbcType=VARCHAR},
+      is_email_unsubs = #{record.isEmailUnsubs,jdbcType=SMALLINT},
+      activityid = #{record.activityid,jdbcType=INTEGER},
+      carloan = #{record.carloan,jdbcType=VARCHAR},
+      clear = #{record.clear,jdbcType=VARCHAR},
+      client = #{record.client,jdbcType=VARCHAR},
+      ipcity = #{record.ipcity,jdbcType=VARCHAR},
+      ipprovince = #{record.ipprovince,jdbcType=VARCHAR},
+      ispc = #{record.ispc,jdbcType=VARCHAR},
+      mobileprovince = #{record.mobileprovince,jdbcType=VARCHAR},
+      mobiletype = #{record.mobiletype,jdbcType=VARCHAR},
+      terminal_type = #{record.terminalType,jdbcType=VARCHAR},
+      userprovince = #{record.userprovince,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.vicente.entity.autogen.MaUserDataWithBLOBs" >
+    update ma_user_data
+    <set >
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="corpid != null" >
+        corpid = #{corpid,jdbcType=BIGINT},
+      </if>
+      <if test="encryptedEmail != null" >
+        encrypted_email = #{encryptedEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="encryptedMobile != null" >
+        encrypted_mobile = #{encryptedMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="addtimeHour != null" >
+        addtime_hour = #{addtimeHour,jdbcType=INTEGER},
+      </if>
+      <if test="addtimeWeek != null" >
+        addtime_week = #{addtimeWeek,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null" >
+        age = #{age,jdbcType=DOUBLE},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="allCity != null" >
+        all_city = #{allCity,jdbcType=VARCHAR},
+      </if>
+      <if test="allProvince != null" >
+        all_province = #{allProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null" >
+        birthday = #{birthday,jdbcType=DATE},
+      </if>
+      <if test="realAge != null" >
+        real_age = #{realAge,jdbcType=DOUBLE},
+      </if>
+      <if test="emailIsCorrected != null" >
+        email_is_corrected = #{emailIsCorrected,jdbcType=BIT},
+      </if>
+      <if test="userexpgroupid != null" >
+        userExpGroupid = #{userexpgroupid,jdbcType=INTEGER},
+      </if>
+      <if test="userexpgroup != null" >
+        userExpGroup = #{userexpgroup,jdbcType=VARCHAR},
+      </if>
+      <if test="isEmailUnsubs != null" >
+        is_email_unsubs = #{isEmailUnsubs,jdbcType=SMALLINT},
+      </if>
+      <if test="activityid != null" >
+        activityid = #{activityid,jdbcType=INTEGER},
+      </if>
+      <if test="carloan != null" >
+        carloan = #{carloan,jdbcType=VARCHAR},
+      </if>
+      <if test="clear != null" >
+        clear = #{clear,jdbcType=VARCHAR},
+      </if>
+      <if test="client != null" >
+        client = #{client,jdbcType=VARCHAR},
+      </if>
+      <if test="ipcity != null" >
+        ipcity = #{ipcity,jdbcType=VARCHAR},
+      </if>
+      <if test="ipprovince != null" >
+        ipprovince = #{ipprovince,jdbcType=VARCHAR},
+      </if>
+      <if test="ispc != null" >
+        ispc = #{ispc,jdbcType=VARCHAR},
+      </if>
+      <if test="mobileprovince != null" >
+        mobileprovince = #{mobileprovince,jdbcType=VARCHAR},
+      </if>
+      <if test="mobiletype != null" >
+        mobiletype = #{mobiletype,jdbcType=VARCHAR},
+      </if>
+      <if test="terminalType != null" >
+        terminal_type = #{terminalType,jdbcType=VARCHAR},
+      </if>
+      <if test="userprovince != null" >
+        userprovince = #{userprovince,jdbcType=VARCHAR},
+      </if>
+      <if test="question1 != null" >
+        question1 = #{question1,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="question2 != null" >
+        question2 = #{question2,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="view != null" >
+        view = #{view,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where userid = #{userid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.vicente.entity.autogen.MaUserDataWithBLOBs" >
+    update ma_user_data
+    set email = #{email,jdbcType=VARCHAR},
+      corpid = #{corpid,jdbcType=BIGINT},
+      encrypted_email = #{encryptedEmail,jdbcType=VARCHAR},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      encrypted_mobile = #{encryptedMobile,jdbcType=VARCHAR},
+      addtime_hour = #{addtimeHour,jdbcType=INTEGER},
+      addtime_week = #{addtimeWeek,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      age = #{age,jdbcType=DOUBLE},
+      sex = #{sex,jdbcType=VARCHAR},
+      all_city = #{allCity,jdbcType=VARCHAR},
+      all_province = #{allProvince,jdbcType=VARCHAR},
+      birthday = #{birthday,jdbcType=DATE},
+      real_age = #{realAge,jdbcType=DOUBLE},
+      email_is_corrected = #{emailIsCorrected,jdbcType=BIT},
+      userExpGroupid = #{userexpgroupid,jdbcType=INTEGER},
+      userExpGroup = #{userexpgroup,jdbcType=VARCHAR},
+      is_email_unsubs = #{isEmailUnsubs,jdbcType=SMALLINT},
+      activityid = #{activityid,jdbcType=INTEGER},
+      carloan = #{carloan,jdbcType=VARCHAR},
+      clear = #{clear,jdbcType=VARCHAR},
+      client = #{client,jdbcType=VARCHAR},
+      ipcity = #{ipcity,jdbcType=VARCHAR},
+      ipprovince = #{ipprovince,jdbcType=VARCHAR},
+      ispc = #{ispc,jdbcType=VARCHAR},
+      mobileprovince = #{mobileprovince,jdbcType=VARCHAR},
+      mobiletype = #{mobiletype,jdbcType=VARCHAR},
+      terminal_type = #{terminalType,jdbcType=VARCHAR},
+      userprovince = #{userprovince,jdbcType=VARCHAR},
+      question1 = #{question1,jdbcType=LONGVARCHAR},
+      question2 = #{question2,jdbcType=LONGVARCHAR},
+      view = #{view,jdbcType=LONGVARCHAR}
+    where userid = #{userid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.vicente.entity.autogen.MaUserData" >
+    update ma_user_data
+    set email = #{email,jdbcType=VARCHAR},
+      corpid = #{corpid,jdbcType=BIGINT},
+      encrypted_email = #{encryptedEmail,jdbcType=VARCHAR},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      encrypted_mobile = #{encryptedMobile,jdbcType=VARCHAR},
+      addtime_hour = #{addtimeHour,jdbcType=INTEGER},
+      addtime_week = #{addtimeWeek,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      age = #{age,jdbcType=DOUBLE},
+      sex = #{sex,jdbcType=VARCHAR},
+      all_city = #{allCity,jdbcType=VARCHAR},
+      all_province = #{allProvince,jdbcType=VARCHAR},
+      birthday = #{birthday,jdbcType=DATE},
+      real_age = #{realAge,jdbcType=DOUBLE},
+      email_is_corrected = #{emailIsCorrected,jdbcType=BIT},
+      userExpGroupid = #{userexpgroupid,jdbcType=INTEGER},
+      userExpGroup = #{userexpgroup,jdbcType=VARCHAR},
+      is_email_unsubs = #{isEmailUnsubs,jdbcType=SMALLINT},
+      activityid = #{activityid,jdbcType=INTEGER},
+      carloan = #{carloan,jdbcType=VARCHAR},
+      clear = #{clear,jdbcType=VARCHAR},
+      client = #{client,jdbcType=VARCHAR},
+      ipcity = #{ipcity,jdbcType=VARCHAR},
+      ipprovince = #{ipprovince,jdbcType=VARCHAR},
+      ispc = #{ispc,jdbcType=VARCHAR},
+      mobileprovince = #{mobileprovince,jdbcType=VARCHAR},
+      mobiletype = #{mobiletype,jdbcType=VARCHAR},
+      terminal_type = #{terminalType,jdbcType=VARCHAR},
+      userprovince = #{userprovince,jdbcType=VARCHAR}
+    where userid = #{userid,jdbcType=BIGINT}
+  </update>
+</mapper>
